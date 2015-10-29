@@ -28,14 +28,13 @@ In this session, you will learn how to use IPython Notebooks, as well as how to 
 * Plot key terms in the inaugural addresses longitudinally
 * Discussion: *Why might we want to use NLTK? What are its limitations?*
 
-## [Session 2: Functions, lists and variables](http://nbviewer.ipython.org/github/resbaz/nltk/blob/master/resources/completed-notebooks/session-2.ipynb)
-
-In this session, we devote more time to the fundamentals of Python, learning how to create and manipulate different kinds of data. In the first half of the session, we discuss:
+In this session, we also devote more time to the fundamentals of Python, learning how to create and manipulate different kinds of data. In the first half of the session, we discuss:
 
 * Working with variables
 * Writing functions
 * Creating frequency distributions
 
+## [Session Two: Corpus linguistic tasks](http://nbviewer.ipython.org/github/resbaz/nltk/blob/master/resources/completed-notebooks/session-2.ipynb)
 In the second half of the session, we put our existing skills to work in order to investigate the corpora that come bundled with NLTK. The major kinds of analysis we cover are:
 
 * Sentence splitting
@@ -47,32 +46,11 @@ In the second half of the session, we put our existing skills to work in order t
 
 ## [Session 3: The Fraser Corpus](http://nbviewer.ipython.org/github/resbaz/nltk/blob/master/resources/completed-notebooks/session-3.ipynb)
 
-By this point, we're familiar with what NLTK is and how to use it. It's time to put it to work on a novel dataset. We've chosen a [corpus of Malcolm Fraser's speeches](http://www.unimelb.edu.au/malcolmfraser/speeches/electorate/). In this session, we begin by:
-
-* Introducing the corpus
-* Exploring corpus metadata
-* Data structuring by metadata feature
-* Getting keywords, n-grams, and collocates
-* Part-of-speech tagging and parsing the data
-
-Next, we'll use some purpose-built tools called [`corpkit`](https://www.github.com/interrogator/corpkit) to look for longitudinal changes in the language of Malcolm Fraser's speeches. These tools help us with:
-
-* Searching syntax trees
-* Interrogating each subcorpus
-* Visualising results
-* Viewing and editing results
-
-We'll leave some time at the end of this session for exploring the Fraser Corpus, and for discussing what we found.
+Details forthcoming
 
 ## [Session 4: Getting the most out of what we've learned](http://nbviewer.ipython.org/github/resbaz/nltk/blob/master/resources/completed-notebooks/session-4.ipynb)
 
-So, we've learned some great skills! But, we need to know how to put these skills into practice within our own work. In this final session, we discuss:
-
-* What kind(s) of data we're all working with
-* Storing your data and results
-* Using what you've learned here
-* Developing your skills further
-* Summarising and saying goodbye
+Details forthcoming
 
 ## Adding to this repository
 
