@@ -1,8 +1,5 @@
 # Data Carpentry with NLTK and IPython
 
-<img style="float:left" src="http://ipython.org/_static/IPy_header.png" />
-<br>
-
 This repository contains teaching materials for Saarland Uni's *Working With Corpora* program. It's been adapted from the repository for teaching materials and additional resources used by Research Platforms Services to teach *Python*, *IPython* and the *Natural Language Toolkit* (*NLTK*).
 
 All the materials used in the workshops are in this repository. In fact, cloning this repository will be our first activity together as a group. To do that, just open your terminal and type/paste:
