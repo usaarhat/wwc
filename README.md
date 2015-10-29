@@ -3,12 +3,12 @@
 <img style="float:left" src="http://ipython.org/_static/IPy_header.png" />
 <br>
 
-This is a fork of the repository for teaching materials and additional resources used by Research Platforms Services to teach *Python*, *IPython* and the *Natural Language Toolkit* (*NLTK*). 
+This repository contains teaching materials for Saarland Uni's *Working With Corpora* program. It's been adapted from the repository for teaching materials and additional resources used by Research Platforms Services to teach *Python*, *IPython* and the *Natural Language Toolkit* (*NLTK*).
 
 All the materials used in the workshops are in this repository. In fact, cloning this repository will be our first activity together as a group. To do that, just open your terminal and type/paste:
 
 ```shell
-git clone https://github.com/resbaz/nltk.git
+git clone https://github.com/interrogator/wwc.git
 ```
 
 Though we'll be working with blank notebooks in our training sessions, everthing we cover lives as a complete notebook in the `resources/completed-notebooks` directory. These notebooks are useful for remembering or extending what you learned in during training. Alternatively, they may be useful for those who cannot attend our sessions face-to-face.
