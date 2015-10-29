@@ -1,6 +1,3 @@
-<br>
-<img style="float:left" src="http://ipython.org/_static/IPy_header.png" />
-<br>
 
 # Session 4: Getting the most out of what we've learned
 

@@ -1,7 +1,3 @@
-<br>
-<img style="float:left" src="http://ipython.org/_static/IPy_header.png" />
-<br>
-
 # Session 2: Common NLTK tasks
 
 <br>

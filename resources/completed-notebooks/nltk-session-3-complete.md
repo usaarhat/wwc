@@ -1,7 +1,3 @@
-<br>
-<img style="float:left" src="http://ipython.org/_static/IPy_header.png" />
-<br>
-
 # Session 3: Charting change in Fraser's speeches
 
 In this lesson, we investigate a fully-parsed version of the Fraser Corpus. We
