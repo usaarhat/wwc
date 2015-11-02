@@ -1,22 +1,16 @@
 # Session 1: Orientation
 
-<br>
 Welcome to *Jupyter*. Through this interface, you'll be learning a
 lot of things:
 
 * A Programming language: **Python**
 * A Python library: **NLTK**
-* Overlapping research areas: **Corpus linguistics**, **Natural language
-processing**, **Distant reading**
-* Additional skills: **Regular Expressions**, some **Shell commands**, and
-**tips on managing your data**
+* Overlapping research areas: **Corpus linguistics**, **Natural language processing**, **Distant reading**
+* Additional skills: **Regular Expressions**, some **Shell commands**, and **tips on managing your data**
 
-You can head [here](https://github.com/interrogator/wwc) for the
-fully articulated overview of the course, but we'll almost always stay within
-this **Jupyter** interface.
+You can head [here](https://github.com/interrogator/wwc) for the fully articulated overview of the course, but we'll almost always stay within this **Jupyter** interface.
 
-Remember, everything we cover here will remain available to you after we're through is
-over, including a completed version of these notebooks. It's all accessible via [GitHub](https://github.com/interrogator/wwc).
+Remember, everything we cover here will remain available to you after we're through is over, including a completed version of these notebooks. It's all accessible via [GitHub](https://github.com/interrogator/wwc).
 
 **Any questions before we begin?**
 
@@ -24,26 +18,17 @@ Alright, we're off!
 
 ## Text as data
 
-Programming languages like Python are great for processing data. In order to
-apply it to *text*, we need to think about our text as data. This means being aware of how text is structured, what extra information might be encoded in it, and how to manage to give the best results.
+Programming languages like Python are great for processing data. In order to apply it to *text*, we need to think about our text as data. This means being aware of how text is structured, what extra information might be encoded in it, and how to manage to give the best results.
 
 ## What is the Natural Language Toolkit?
 
-We'll be covering some of the theory behind corpus linguistics later on, but
-let's start by looking at some of the tasks NLTK can help you with.
+We'll be covering some of the theory behind corpus linguistics later on, but let's start by looking at some of the tasks NLTK can help you with.
 
-NLTK is a Python Library for working with written language data. It is free and
-extensively documented. Many areas we'll be covering are treated in more detail
-in the NLTK Book, available free online from [here](http://www.nltk.org/book/).
+NLTK is a Python Library for working with written language data. It is free and extensively documented. Many areas we'll be covering are treated in more detail in the NLTK Book, available free online from [here](http://www.nltk.org/book/). 
 
-> Note: NLTK provides tools for tasks ranging from very simple (counting words
-in a text) to very complex (writing and training parsers, etc.). Many advanced
-tasks are beyond the scope of this course, but by the time we're done, you
-should understand Python and NLTK well enough to perform these tasks on your
-own!
+> Note: NLTK provides tools for tasks ranging from very simple (counting words in a text) to very complex (writing and training parsers, etc.). Many advanced tasks are beyond the scope of this course, but by the time we're done, you should understand Python and NLTK well enough to perform these tasks on your own!
 
-We will start by importing NLTK, setting a path to NLTK resources, and
-downloading some additional stuff.
+We will start by importing NLTK, setting a path to NLTK resources, and downloading some additional stuff.
 
 ```python
 # clear output from download
@@ -74,11 +59,9 @@ text2
 
 ### Exploring vocabulary
 
-NLTK makes it really easy to get basic information about the size of a text and
-the complexity of its vocabulary.
+NLTK makes it really easy to get basic information about the size of a text and the complexity of its vocabulary.
 
-`len()` gives the number of symbols or 'tokens' in your text. This is the total
-number of words and items of punctuation.
+`len()` gives the number of symbols or 'tokens' in your text. This is the total number of words and items of punctuation.
 
 `set()` gives you a list of all the tokens in the text, without the duplicates.
 
@@ -98,12 +81,9 @@ len(set(text3))
 sorted(set(text3)) 
 ```
 
-We can investigate the *lexical richness* of a text. For example, by dividing
-the total number of words by the number of unique words, we can see the average
-number of times each word is used.
+We can investigate the *lexical richness* of a text. For example, by dividing the total number of words by the number of unique words, we can see the average number of times each word is used.
 
-We can also count the number of times a word is used and calculate what
-percentage of the text it represents.
+We can also count the number of times a word is used and calculate what percentage of the text it represents.
 
 ```python
 len(text3)/len(set(text3))
@@ -158,8 +138,7 @@ text4.dispersion_plot(["citizens", "democracy", "freedom", "duties", "America"])
 
 ## How Python works
 
-We've seen a bit now of how NLTK can help you to interrogate a text. Let's back
-up and talk about Python itself and the environment we're using.
+We've seen a bit now of how NLTK can help you to interrogate a text. Let's back up and talk about Python itself and the environment we're using.
 
 ```python
 # A simple welcome message printer.
@@ -203,13 +182,10 @@ So, whitespace tells both Python and human readers where things start and stop.
 
 ### Input/Output Types
 
-* Python understands different *types* of input, including *string*, *unicode
-string*, *integer*, *item*, *tuple* and *dict*.
-* Different types of information behave in different ways, and the ways they are
-represented visually are different as well.
+* Python understands different *types* of input, including *string*, *unicode string*, *integer*, *item*, *tuple* and *dict*.
+* Different types of information behave in different ways, and the ways they are represented visually are different as well.
 * You should always be aware of what kind of type you're passing around, and what is the most appropriate for your data
-* For example, if you're trying to do maths, you'll want to be working with
-*integers* and/or floats:
+* For example, if you're trying to do maths, you'll want to be working with *integers* and/or *floats*:
 
 ```python
 1 + 2  # integer plus integer
@@ -263,7 +239,7 @@ print(more_adj)
 Python has *variables* and *commands*. Commands may have *arguments* and
 *options*.
 
-> Jupyter highlights your code automatically, which can help you read it faster
+> *Jupyter* highlights your code automatically, which can help you read it faster
 and spot problems.
 
 ```python
@@ -307,8 +283,7 @@ def welcomer(name):
     print('Welcome ' + name + '!')
 ```
 
-Notice that it doesn't do anything by itself. It needs to actually be *called*,
-and given some data:
+Notice that it doesn't do anything by itself. It needs to actually be *called*, and given some data:
 
 ```python
 welcomer('Kim')
@@ -327,8 +302,7 @@ Advantages of functions:
 
 ### Challenge!
 
-Using a function, determine which of the nine texts in the NLTK Book has the
-highest lexical diversity score.
+Using a function, determine which of the nine texts in the NLTK Book has the highest lexical diversity score.
 
 ```python
 def lexical_diversity(text):
@@ -344,15 +318,11 @@ The parentheses are important here as they sepatate the the task, that is the wo
 
 The data in parentheses is called the argument of the function. When we use a function, we say that we 'call' it.
 
-Other functions that we've used already include `len()` and `sorted()` - these were
-predefined. `lexical_diversity()` is one we set up ourselves; note that it's
-conventional to put a set of parentheses after a function, to make it clear what
-we're talking about.
+Other functions that we've used already include `len()` and `sorted()` - these were predefined. `lexical_diversity()` is one we set up ourselves; note that it's conventional to put a set of parentheses after a function, to make it clear what we're talking about.
 
 ### Lists
 
-Python treats a text as a long list of words. First, we'll make some lists of
-our own, to give you an idea of how a list behaves.
+Python treats a text as a long list of words. First, we'll make some lists of our own, to give you an idea of how a list behaves.
 
 ```python
 sent1 = ['Call', 'me', 'Ishmael', '.']
@@ -390,8 +360,7 @@ salad.append('orange')  # add orange
 print('Our fruit salad contains: ' + str(salad))
 ```
 
-If we want to print our ingredients in a nicer looking form, we might use a
-function like `join()`.
+If we want to print our ingredients in a nicer looking form, we might use a function like `join()`.
 
 ```python
 salad = []
@@ -401,8 +370,7 @@ listasastring = ''.join(salad)  # create a string with all the list items joined
 print('Our fruit salad contains: ' + listasastring)
 ```
 
-... whoops! Still ugly. We didn't put anything in between the '' to use as a
-delimiter.
+... whoops! Still ugly. We didn't put anything in between the '' to use as a delimiter.
 
 ```python
 fruitsalad.append('canteloupe')
@@ -514,7 +482,7 @@ fdist1.plot(50, cumulative = True)
 
 ### Challenge!
 
-Create a function called `common_Words()` and use it to compare the 15 most common words of four of the texts in the NLTK book. Discuss what you found with your neighbour.
+Create a function called `common_words()` and use it to compare the 15 most common words of four of the texts in the NLTK book. Discuss what you found with your neighbour.
 
 As well as counting individual words, we can count other features of vocabulary, such as how often words of different lengths occur. We do this by putting together a number of the commands we've already learned.
 
@@ -650,11 +618,11 @@ sorted(n for n in sent7 if n.isdigit())
 Have a play around with some of these operators in the cells below.
 
 ```python
-#
+
 ```
 
 ```python
-#
+
 ```
 
 ```python
@@ -665,7 +633,7 @@ Have a play around with some of these operators in the cells below.
 
 You'll remember right at the beginning we started looking at the size of the vocabulary of a text, but there were two problems with the results we got from using:
 
-     len(set(text1)).
+     len(set(text1))
 
 This count includes items of punctuation and treats capitalised and non-capitalised words as different things (*This* vs *this*). We can now fix these problems. We start by getting rid of capitalised words, then we get rid of the punctuation and numbers.
 
