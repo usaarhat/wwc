@@ -548,8 +548,7 @@ long_words = [word for word in v if len(word) > 15]
 sorted(long_words)
 ```
 
-We can fine-tune our selection even further by adding other conditions. For
-instance, we might want to find long words that occur frequently (or rarely).
+We can fine-tune our selection even further by adding other conditions. For instance, we might want to find long words that occur frequently (or rarely).
 
 ### Challenge! ###
 
