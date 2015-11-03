@@ -232,8 +232,8 @@ def sum_int(x, y):
     print("Summing Intergers...")
     return x + y
 
-z1 = sum_int(3 + 5)
-z2 = sum_int(2 + 2)
+z1 = sum_int(3, 5)
+z2 = sum_int(2, 2)
 ```
 
 *Imagine if you have to call that function 1 million times...*
@@ -247,8 +247,8 @@ def sum_int(x, y):
     print("Summing Intergers...")
     return x + y
 
-z1 = sum_int(3 + 5)
-z2 = sum_int(2 + 2)
+z1 = sum_int(3, 5)
+z2 = sum_int(2, 2)
 clear_output()
 ```
 
