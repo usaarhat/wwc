@@ -46,7 +46,7 @@ type(x)
 
 ## Parseltongue Baby Talk
 
-Here's some intuitive ways to manipulate text, numbers, lists in python.
+Here's some intuitive ways to manipulate text, numbers, lists in python using some built-in functions.
 
 This is how one would define a list of things in python:
 
@@ -73,7 +73,7 @@ The term to call this kind of transformation is called, "*type casting*". To rei
 a = [1,1,2,2,3,4,5,6,6]
 print(type(a), len(a))
 b = set(a)
-print(type(b), len(a))
+print(type(b), len(b))
 ```
 
 We can also remove items from a list by iterating through each item and checking them. So, let's say we don't want twos and sixes in our list:
