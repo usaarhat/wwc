@@ -30,17 +30,12 @@ NLTK is a Python Library for working with written language data. It is free and 
 We will start by importing NLTK, setting a path to NLTK resources, and downloading some additional stuff.
 
 ```python
-
-from IPython.display import display, clear_output # Use for clearing output from download.  
-
 import nltk # Use for importing the nltk library
 
 user_nltk_dir = "/home/researcher/nltk_data" # Specify our data directory
 if user_nltk_dir not in nltk.data.path: # Make sure nltk can access this dir.
     nltk.data.path.insert(0, user_nltk_dir)
-nltk.download("book", download_dir=user_nltk_dir) # Download book materials to data dir.
-
-clear_output() #
+nltk.download("book", download_dir=user_nltk_dir, quiet=True) # Download book materials to data dir.
 ```
 
 Oh, we've got to import some corpora used in the book as well...
