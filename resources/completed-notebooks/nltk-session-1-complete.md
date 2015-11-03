@@ -1,7 +1,6 @@
 # Session 1: Orientation
 
-Welcome to *Jupyter*. Through this interface, you'll be learning a
-lot of things:
+Welcome to *Jupyter*. Through this interface, you'll be learning a lot of things:
 
 * A Programming language: **Python**
 * A Python library: **NLTK**
@@ -31,15 +30,17 @@ NLTK is a Python Library for working with written language data. It is free and 
 We will start by importing NLTK, setting a path to NLTK resources, and downloading some additional stuff.
 
 ```python
-# clear output from download
-from IPython.display import display, clear_output
-# import: all the nltk basics
-import nltk
-user_nltk_dir = "/home/researcher/nltk_data" # specify our data directory
-if user_nltk_dir not in nltk.data.path: # make sure nltk can access this dir
+
+from IPython.display import display, clear_output # Use for clearing output from download.  
+
+import nltk # Use for importing the nltk library
+
+user_nltk_dir = "/home/researcher/nltk_data" # Specify our data directory
+if user_nltk_dir not in nltk.data.path: # Make sure nltk can access this dir.
     nltk.data.path.insert(0, user_nltk_dir)
-nltk.download("book", download_dir=user_nltk_dir) # download book materials to data directory
-clear_output()
+nltk.download("book", download_dir=user_nltk_dir) # Download book materials to data dir.
+
+clear_output() #
 ```
 
 Oh, we've got to import some corpora used in the book as well...
