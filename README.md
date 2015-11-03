@@ -28,9 +28,6 @@ In this session, you will learn how to use the Jupyter Notebook, as well as how 
 * Quickstart: *US Inaugural Addresses Corpus*
 * Plot key terms in the inaugural addresses longitudinally
 * Discussion: *Why might we want to use NLTK? What are its limitations?*
-
-In this session, we also devote more time to the fundamentals of Python, learning how to create and manipulate different kinds of data. In the first half of the session, we discuss:
-
 * Working with variables
 * Writing functions
 * Creating frequency distributions
