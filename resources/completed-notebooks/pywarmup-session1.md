@@ -158,8 +158,10 @@ print(sentence.lower())
 
 Or you could check whether a character is upper or lower case:
 
+```python
 word_i = "I"
 word_i.isupper() # Returns true if `word_i` is uppercase.
+```
 
 Now you try and see how to check if `word_i` is lowercase (fill in your own code in place of ?????)
 
