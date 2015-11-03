@@ -1,8 +1,10 @@
 # Data Carpentry with NLTK and IPython
 
-This repository contains teaching materials for Saarland Uni's *Working With Corpora* program. It's been adapted from the repository for teaching materials and additional resources used by [*Research Platforms Services*](http://melbourne.resbaz.edu.au/) at the University of Melbourne to teach *Python*, *IPython*, *Jupyter* and the *Natural Language Toolkit* (*NLTK*).
+This repository contains teaching materials for Saarland Uni's [*Working With Corpora*](http://fedora.clarin-d.uni-saarland.de/unserwiki/doku.php?id=training:working_with_corpora/) program. It's been adapted from the repository for teaching materials and additional resources used by [*Research Platforms Services*](http://melbourne.resbaz.edu.au/) at the University of Melbourne to teach *Python*, *IPython*, *Jupyter* and the *Natural Language Toolkit* (*NLTK*).
 
 Essentially, the idea of both programs is to run free training in reproducible research methods and tools via [a cloud platform](https://dit4c.github.io/), so that nobody has to worry about installation/operating system/specs problems. All code is written and executed within [Jupyter Notebooks](http://jupyter.org/), allowing easy access to earlier input and output, as well as the rich display of text/images.
+
+Learn more on [WwC Python sessions](http://fedora.clarin-d.uni-saarland.de/unserwiki/doku.php?id=training:python) at this URL. Want to join? Register by filling in this [form](https://docs.google.com/forms/d/1VThhhXYbrcKKe8p33tijzAIpbKHBqOcVsUyEcXDAu4Y/viewform). Subscribe to the [mailing list](https://groups.google.com/forum/#!forum/workingwithcorpora) and check the [calendar](https://calendar.google.com/calendar/embed?src=toccngu71401plkr8q4ccql75s@group.calendar.google.com&ctz=Europe/Berlin) to keep up-to-date with WwC activities.
 
 All the materials used in the workshops are in this repository. In fact, cloning this repository will be our first activity together as a group. To do that, just open your terminal and type/paste:
 
@@ -10,9 +12,9 @@ All the materials used in the workshops are in this repository. In fact, cloning
 git clone https://github.com/interrogator/wwc.git
 ```
 
-Though we'll be working with blank notebooks in our training sessions, everthing we cover lives as a complete notebook in the `resources/completed-notebooks` directory. These notebooks are useful for remembering or extending what you learned in during training. Alternatively, they may be useful for those who cannot attend our sessions face-to-face.
+Though we'll be working with blank notebooks in our training sessions, everything we cover lives as a complete notebook in the `resources/completed-notebooks` directory. These notebooks are useful for remembering or extending what you learned in during training. Alternatively, they may be useful for those who cannot attend our sessions face-to-face.
 
-Below is a basic overview of the four-session lesson plan. You can click the headings to view complete versions of the IPython Notebooks we'll be using in each sessions. The materials are always evolving, and pull requests are always welcome.
+Below is a basic overview of the four-session lesson plan. You can click the headings to view complete versions of the IPython Notebooks we'll be using in each session. The materials are always evolving, and pull requests are always welcome.
 
 ## [Session 1: Orientation](https://github.com/interrogator/wwc/blob/master/resources/completed-notebooks/nltk-session-1-complete.md)
 
@@ -67,6 +69,6 @@ Our final session involves:
 
 You're more than welcome to submit a pull request with changes to our course materials.
 
-The `.ipynb` files used by both students and instructors are automaticallygenerated using [notedown](https://github.com/aaren/notedown). Accordingly, the best way to modify our course materials is to update the `.md` file, rather than the `.ipynb` file. These also live in `resources/completed-notebooks`.
+The `.ipynb` files used by both students and instructors are automatically generated using [notedown](https://github.com/aaren/notedown). Accordingly, the best way to modify our course materials is to update the `.md` file, rather than the `.ipynb` file. These also live in `resources/completed-notebooks`.
 
 Longer functions/solutions to challenges may be archived in `resources/scripts.py`, so that they may be imported by instructors/helpers on students' notebooks if need be.
