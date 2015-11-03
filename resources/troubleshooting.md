@@ -41,7 +41,6 @@ The functions currently in `resources/scripts.py` are:
 * `quicktree(sentence)`
 * `parse_metadata(text)`
 * `structure_corpus(oldpath, newpath)`
-* `plot('Title', results, fract_of = totals)`
 
 ## Adding to this document
 
