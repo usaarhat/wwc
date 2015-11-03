@@ -1,4 +1,4 @@
-# Data Carpentry with NLTK and IPython
+# Data Carpentry with Python and NLTK
 
 This repository contains teaching materials for Saarland Uni's [*Working With Corpora*](http://fedora.clarin-d.uni-saarland.de/unserwiki/doku.php?id=training:working_with_corpora/) program. It's been adapted from the repository for teaching materials and additional resources used by [*Research Platforms Services*](http://melbourne.resbaz.edu.au/) at the University of Melbourne to teach *Python*, *IPython*, *Jupyter* and the *Natural Language Toolkit* (*NLTK*).
 
@@ -14,7 +14,7 @@ git clone https://github.com/interrogator/wwc.git
 
 Though we'll be working with blank notebooks in our training sessions, everything we cover lives as a complete notebook in the `resources/completed-notebooks` directory. These notebooks are useful for remembering or extending what you learned in during training. Alternatively, they may be useful for those who cannot attend our sessions face-to-face.
 
-Below is a basic overview of the four-session lesson plan. You can click the headings to view complete versions of the IPython Notebooks we'll be using in each session. The materials are always evolving, and pull requests are always welcome.
+Below is a basic overview of the four-session lesson plan. You can click the headings to view complete versions of the Jupyter Notebooks we'll be using in each session. The materials are always evolving, and pull requests are always welcome.
 
 ## [Session 1: Orientation](https://github.com/interrogator/wwc/blob/master/resources/completed-notebooks/nltk-session-1-complete.md)
 
@@ -35,9 +35,9 @@ In this session, we also devote more time to the fundamentals of Python, learnin
 * Writing functions
 * Creating frequency distributions
 
-## [Session Two: Corpus linguistic tasks](https://github.com/interrogator/wwc/blob/master/resources/completed-notebooks/nltk-session-2-complete.md)
+## [Session 2: Corpus linguistic tasks](https://github.com/interrogator/wwc/blob/master/resources/completed-notebooks/nltk-session-2-complete.md)
 
-In this session, we put our existing skills to work in order to investigate the corpora that come bundled with NLTK. The major kinds of analysis we cover are:
+In this session, we put our existing skills to work in order to investigate the corpora that come bundled with NLTK. The major kinds of processes we cover are:
 
 * Sentence splitting
 * Tokenisation
