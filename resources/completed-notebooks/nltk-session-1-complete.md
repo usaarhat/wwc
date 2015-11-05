@@ -627,23 +627,23 @@ set(w for w in text5 if len(w) > 7 and text5.count(w) > 7)
 ```
 
 ```python
-
+#
 ```
 
 ```python
-
+#
 ```
 
 ```python
-
+#
 ```
 
 ```python
-
+#
 ```
 
 ```python
-
+#
 ```
 
 ### Test-driven programming
@@ -678,15 +678,15 @@ For the last part of the session, explore some NLTK texts, using some of Python'
 | s.istitle()    |  test if s contains cased characters and is titlecased (i.e. all words in s have initial capitals) |
 
 ```python
-
+#
 ```
 
 ```python
-
+#
 ```
 
 ```python
-
+#
 ```
 
 ### Bonus!
