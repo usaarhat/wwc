@@ -35,7 +35,7 @@ import nltk # Use for importing the nltk library
 user_nltk_dir = "/home/researcher/nltk_data" # Specify our data directory
 if user_nltk_dir not in nltk.data.path: # Make sure nltk can access this dir.
     nltk.data.path.insert(0, user_nltk_dir)
-nltk.download("book", download_dir=user_nltk_dir, quiet=True) # Download book materials to data dir.
+nltk.download("book", download_dir=user_nltk_dir, quiet=True) # Download book materials to data dir
 ```
 
 Oh, we've got to import some corpora used in the book as well...
@@ -67,10 +67,13 @@ sent8
 
 NLTK makes it really easy to get basic information about the size of a text and the complexity of its vocabulary.
 
- - `len()` gives the number of symbols or 'tokens' in your text. This is the total number of words and items of punctuation.
- - `set()` gives you a list of all the tokens in the text, without the duplicates.
- - Hence, `len(set(text3))` will give you the total number unique tokens. Remember this still includes punctuation.
- - `sorted()` places items in the list into alphabetical order, with punctuation symbols and capitalised words first.
+`len()` gives the number of symbols or 'tokens' in your text. This is the total number of words and items of punctuation.
+
+`set()` gives you a list of all the tokens in the text, without the duplicates.
+
+Hence, `len(set(text3))` will give you the total number unique tokens. Remember this still includes punctuation.
+
+`sorted()` places items in the list into alphabetical order, with punctuation symbols and capitalised words first.
 
 ```python
 len(text3)
