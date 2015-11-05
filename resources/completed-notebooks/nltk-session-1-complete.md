@@ -699,6 +699,7 @@ You'll remember right at the beginning we started looking at the size of the voc
 
      len(set(text1))
 
+
 This count includes items of punctuation and treats capitalised and non-capitalised words as different things (*This* vs *this*). We can now fix these problems. We start by getting rid of capitalised words, then we get rid of the punctuation and numbers.
 
 ```python
