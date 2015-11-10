@@ -1,3 +1,7 @@
+Functions, exceptions, list comprehensions and PRF
+====
+
+
 A spam-classifier where it outputs spam (y=1) and non-spam (y=0). 90% of the time it's non-spam:
 
 ```python
