@@ -35,7 +35,7 @@ import nltk # Use for importing the nltk library
 user_nltk_dir = "/home/researcher/nltk_data" # Specify our data directory
 if user_nltk_dir not in nltk.data.path: # Make sure nltk can access this dir.
     nltk.data.path.insert(0, user_nltk_dir)
-nltk.download("book", download_dir=user_nltk_dir, quiet=True) # Download book materials to data dir.
+nltk.download("book", download_dir=user_nltk_dir, quiet=True) # Download book materials to data dir
 ```
 
 Oh, we've got to import some corpora used in the book as well...
@@ -53,14 +53,27 @@ text2
 #text3
 ```
 
+Additionally, their first sentences have been predefined:
+
+```python
+#sent7
+sent8
+#sent9
+```
+
+... notice how even without any real context, we can understand what a corpus might contain. Though people often accuse quantitative/corpus linguists of removing language from context, people forget that in large part, **context is embedded in the lexicogrammar of texts**.
+
 ### Exploring vocabulary
 
 NLTK makes it really easy to get basic information about the size of a text and the complexity of its vocabulary.
 
- - `len()` gives the number of symbols or 'tokens' in your text. This is the total number of words and items of punctuation.
- - `set()` gives you a list of all the tokens in the text, without the duplicates.
- - Hence, `len(set(text3))` will give you the total number unique tokens. Remember this still includes punctuation.
- - `sorted()` places items in the list into alphabetical order, with punctuation symbols and capitalised words first.
+`len()` gives the number of symbols or 'tokens' in your text. This is the total number of words and items of punctuation.
+
+`set()` gives you a list of all the tokens in the text, without the duplicates.
+
+Hence, `len(set(text3))` will give you the total number unique tokens. Remember this still includes punctuation.
+
+`sorted()` places items in the list into alphabetical order, with punctuation symbols and capitalised words first.
 
 ```python
 len(text3)
@@ -117,6 +130,7 @@ text2.common_contexts(["monstrous", "very"])  # this function takes two argument
 Python also lets you create graphs to display data. To represent information about a text graphically, import the Python library *numpy*. We can then generate a dispersion plot that shows where given words occur in a text.
 
 ```python
+%matplotlib inline
 import numpy
 text1.dispersion_plot(["whale"])
 ```
@@ -147,7 +161,7 @@ if condition is True:
 
 Before we start coding, we should familiarise ourselves with the *Jupyter* interface. Click `Help --\> User interface tour` to begin. 
 
-> Keyboard shortcuts come in very handy. Click `Help --\> Keyboard shortcuts` to get an overview. *The more you code, the less you'll want to use your mouse!
+> Keyboard shortcuts come in very handy. Click `Help --\> Keyboard shortcuts` to get an overview. *The more you code, the less you'll want to use your mouse*!
 
 ## Python: core concepts
 
@@ -225,6 +239,8 @@ more_adj = str(adj) + 'overwhelmed'
 print(more_adj)
 ```
 
+Anybody care to explain what just happened?
+
 ### Basic syntax
 
 **Only do this section if we have time!!**
@@ -290,6 +306,7 @@ Advantages of functions:
 
 1. Save you typing
 2. You can be sure you're doing exactly the same operation every time
+3. When there's a problem in your code, you can fix the problematic function without causing a chain reaction
 
 > Learn to love tab-completion! Typing the first one or two letters of a command you've used previously then hitting tab will auto-complete that command, saving you typing (i.e. time and mistakes!).
 
@@ -329,9 +346,9 @@ sent1
 len(sent1)
 ```
 
-The opening sentences of each of our texts have been pre-defined for you. You can inspect them by typing in 'sent2' etc.
+The opening sentences of each of our texts have been pre-defined for you. You can inspect them by typing in `sent2` etc.
 
-You can add lists together, creating a new list containing all the items from both lists. You can do this by typing out the two lists or you can add two or more pre-defined lists. This is called concatenation.
+You can add lists together, creating a new list containing all the items from both lists. You can do this by typing out the two lists or you can add two or more pre-defined lists. This is called *concatenation*.
 
 ```python
 sent4 + sent1
@@ -348,7 +365,7 @@ There are some things we can do to make it easier to read the contents of a stri
 
 ```python
 salad = []  # declare an empty list
-salad.append('apply')  # add apply
+salad.append('apple')  # add apple
 salad.append('orange')  # add orange
 print('Our fruit salad contains: ' + str(salad))
 ```
@@ -357,7 +374,7 @@ If we want to print our ingredients in a nicer looking form, we might use a func
 
 ```python
 salad = []
-salad.append('apply')
+salad.append('apple')
 salad.append('orange')
 listasastring = ''.join(salad)  # create a string with all the list items joined together
 print('Our fruit salad contains: ' + listasastring)
@@ -376,26 +393,29 @@ print('Our fruit salad contains: ' + listasastring)
 We can navigate this list with the help of indexes. Just as we can find out the number of times a word occurs in a text, we can also find where a word first occurs. We can navigate to different points in a text without restriction, so long as we can describe where we want to be.
 
 ```python
-print(text4.index('awaken'))
+text4.index('awaken')
 ```
 
-This works in reverse as well. We can ask Python to locate the 158th item in our list (note that we use square brackets here, not parentheses)
+This works in reverse as well. We can ask Python to locate the 159th item in our list (note that we use square brackets here, not parentheses). **Python, unlike some other languages, starts counting at zero**.
 
 ```python
-print(text4[158])
+text4[158]
 ```
 
-As well as pulling out individual items from a list, indexes can be used to pull out selections of text from a large corpus to inspect. We call this slicing
+As well as pulling out individual items from a list, indexes can be used to pull out selections of text from a large corpus to inspect. We call this *slicing*:
 
 ```python
-print(text5[16715:16735])
+text5[16715:16735]
 ```
 
 If we're asking for the beginning or end of a text, we can leave out the first or second number. For instance, `[:5]` will give us the first five items in a list while `[8:]` will give us all the elements from the eighth to the end.
 
 ```python
-print(text2[:10])
-print(text4[145700:])
+text2[:10]
+```
+
+```python
+text4[145700:]
 ```
 
 To help you understand how indexes work, let's create one.
@@ -408,6 +428,14 @@ sent[0]
 print(sent[2])
 ```
 
+It's quite annoying, writing out lists though. Python has some simple methods for helping us out here:
+
+```python
+sent = 'The quick brown fox'
+sent = sent.split()
+sent
+```
+
 Note that the first element in the list is zero. This is because we are telling Python to go zero steps forward in the list. If we use an index that is too large (that is, we ask for something that doesn't exist), we'll get an error.
 
 We can modify elements in a list by assigning new data to one of its index values. We can also replace a slice with new material.
@@ -415,7 +443,7 @@ We can modify elements in a list by assigning new data to one of its index value
 ```python
 sent[2] = 'furry'
 sent[3] = 'child'
-print(sent)
+sent
 ```
 
 ###  Defining variables
@@ -430,13 +458,14 @@ You can call your variables (almost) anything you like, but it's a good idea to 
 
 ### Challenge
 
-* Create a list called 'opening' that consists of the phrase "It was a dark and stormy night; the rain fell in torrents"
-* Create a variable called 'clause' that contains the contents of 'opening', up to the semi-colon
-* Create a variable called 'alphabetised' that contains the contents of 'clause' sorted alphabetically
-* Print 'alphabetised'
+* Write out a sentence
+* Split it into a list of tokens
+* Print the first five tokens
+* Print the the tokens, sorted alphabetically
 
 ```python
-opening = ['It', 'was', 'a', 'dark', 'and', 'stormy', 'night', ';', 'the', 'rain', 'fell', 'in', 'torrents']
+firstline = 'It was a dark and stormy night ; the rain fell in torrents'
+opening = firstline.split()
 clause = opening[0:7]
 alphabetised = sorted(clause)
 ```
@@ -458,101 +487,173 @@ print(alphabetised)
 We can use Python's ability to perform statistical analysis of data to do further exploration of vocabulary. For instance, we might want to be able to find the most common or least common words in a text. We'll start by looking at frequency distribution.
 
 ```python
-fdist1 = FreqDist(text1)
+from collections import Counter
+counted = Counter(text1)
 ```
 
-```python
-fdist1.most_common(50)
-```
+The output here is a *dict*, with *keys* and *values*.
 
 ```python
-fdist1['whale']
+counted.keys()[:5]
 ```
 
+We can look things up in a *dict* like so:
+
 ```python
-fdist1.plot(50, cumulative = True)
+counted['whale']
+```
+
+This kind of dictionary also has a special method, where we can access the items with the highest values:
+
+```python
+counted.most_common(50)
+```
+
+We now have some plottable data. We can use *pandas* to do this. It's a module for manipulating data structures, like R. It's really awesome.
+
+```python
+import pandas
+data = pandas.DataFrame(counted.values(), index = counted.keys(), columns = ['Occurrences'])
+data
+```
+
+We can sort by frequency:
+
+```python
+# sort by the occurrences column, reversed
+data = data.sort('Occurrences', ascending = False)
+data
+```
+
+... And now plot!
+
+```python
+data[:10].plot()
+data[:10].plot(kind = 'bar')
+```
+
+... powerful, eh?
+
+### Loops
+
+One of the most powerful things about programming is the ability to loop through data and perform the same action over and over again. When writing loops in Python, indentation is necessary again:
+
+```python
+for word in sent5:
+    print('Word: ' + word.upper())
 ```
 
 ### Challenge!
 
-Create a function called `common_words()` and use it to compare the 15 most common words of four of the texts in the NLTK book. Discuss what you found with your neighbour.
+**Create a function called `common_words()`, which prints the 15 most common words in an NLTK text.**. If that's easy for you:
 
-As well as counting individual words, we can count other features of vocabulary, such as how often words of different lengths occur. We do this by putting together a number of the commands we've already learned.
-
-We could start like this:
-
-     [len(w) for w in text1]
-
-... but this would print the length of every word in the whole book, so let's skip that bit!
+* Add a keyword argument that controls how many entries to print
+* Format the output nicely
+* Ignore punctuation
 
 ```python
-fdist2= FreqDist(len(w) for w in text1)
+def common_words(text):
+    counted = Counter(text)
+    print(counted.most_common(15))
 ```
 
 ```python
-fdist2.max()
+def common_words(text, n = 15):
+    """for experts!"""
+    counted = Counter([w for w in text if w.isalnum()])
+    for word, count in counted.most_common(n):
+        print(word)
+```
+
+... what have we learned about language from this?
+
+### Counting word lengths
+
+As well as counting individual words, we can count other features of vocabulary, such as how often words of different lengths occur. We do this by putting together some things we've already learned
+
+```python
+lengs = Counter()
+for token in text1:
+    lengs[len(token)] += 1
+lengs
+```
+
+We can get the most common result easily:
+
+```python
+lengs.most_common(1)
+```
+
+... and of course, we can plot our data. Do you remember how?
+
+```python
+data = pandas.DataFrame(lengs.values(), index = lengs.keys(), columns = ['Word length'])
+data.plot(kind = 'pie')
 ```
 
 ```python
-fdist2.freq(3)
+data['Word length'].plot(kind = 'pie')
 ```
 
-These last two commands tell us that the most common word length is 3, and that these 3 letter words account for about 20% of the book.
-
-We can see this just by visually inspecting the list produced by `fdist2.most_common()`, but if this list were too long to inspect readily, or we didn't want to print it, there are other ways to explore it.
-
-It is possible to select the longest words in a text, which may tell you something about its vocabulary and style.
+We might be interested in using this kind of technique to find very long words in our text:
 
 ```python
 v = set(text4)
-long_words = [word for word in v if len(word) > 15]
+long_words = []
+for word in v:
+    if len(word) > 15:
+        if word.lower() not in long_words:
+            long_words.append(word.lower())
 sorted(long_words)
 ```
 
-We can fine-tune our selection even further by adding other conditions. For instance, we might want to find long words that occur frequently (or rarely).
-
 ### Challenge! ###
 
-Can you find all the words in a text that are more than seven letters long and occur more than seven times?
+Can you find all the words in a text that are more than seven letters long and occur more than seven times? Advanced folk, use list comprehension, and do it in as few characters as possible.
 
 ```python
-fdist3 = FreqDist(text5)
-sorted(w for w in set(text5) if len(w) > 7 and fdist5[w] > 7)
+results = []
+for token in text5:
+    if len(token) > 7:
+        if text5.count(token) > 7:
+            if token not in results:
+                results.append(token)
+results
 ```
-
-There are a number of functions defined for NLTK's frequency distributions:
-
-| Function | Purpose  |
-|--------------|------------|
-| fdist = FreqDist(samples) | create a frequency distribution containing the
-given samples |
-| fdist[sample] += 1 | increment the count for this sample |
-| fdist['monstrous']  | count of the number of times a given sample occurred |
-| fdist.freq('monstrous') | frequency of a given sample |
-| fdist.N()  |  total number of samples |
-| fdist.most_common(n)   |  the n most common samples and their frequencies |
-| for sample in fdist:   |  iterate over the items in fdist, when in the loop,
-we refer to each item as sample |
-| fdist.max() | sample with the greatest count |
-| fdist.tabulate()   |  tabulate the frequency distribution |
-| fdist.plot()  |   graphical plot of the frequency distribution |
-| fdist.plot(cumulative=True) | cumulative plot of the frequency distribution |
-| fdist1 < fdist2 | test if samples in fdist1 occur less frequently than in
-fdist2 |
-
-We can also find words that typically occur together, which tend to be very
-specific to a text or genre of texts. We'll talk more about these features and
-how to use them later.
 
 ```python
-text4.collocations()
+# expert mode!
+set(w for w in text5 if len(w) > 7 and text5.count(w) > 7)
 ```
 
-We can also use numerical operators to refine the types of searches we ask
-Python to run. We can use the following relational operators:
+```python
+#
+```
 
+```python
+#
+```
+
+```python
+#
+```
+
+```python
+#
+```
+
+```python
+#
+```
+
+### Test-driven programming
+
+In test-driven design, you define your expected output, and then write code that achieves that. This makes it easy to keep track of your progress, and prevents *feature creep*.
+
+For the last part of the session, explore some NLTK texts, using some of Python's *operators*, listed below.
 
 ### Common relationals
+
 |  Relational | Meaning |
 |--------------:|:------------|
 | <    |  less than |
@@ -561,30 +662,6 @@ Python to run. We can use the following relational operators:
 | !=   |   not equal to |
 | \>   |   greater than |
 | \>= |   greater than or equal to |
-
-### Challenge!
-
-Using one of the pre-defined sentences in the NLTK corpus, use the relational
-operators above to find:
-
-1. Words longer than four characters
-2. Words of four or more characters
-3. Words of exactly four characters
-
-```python
-# Words longer than four characters:
-#
-```
-
-```python
-# Words of four or more characters:
-#
-```
-
-```python
-# Words of exactly four characters:
-#
-```
 
 ### Common operators
 
@@ -601,25 +678,15 @@ operators above to find:
 | s.istitle()    |  test if s contains cased characters and is titlecased (i.e. all words in s have initial capitals) |
 
 ```python
-sorted(w for w in set(text1) if w.endswith('ableness'))
+#
 ```
 
 ```python
-sorted(n for n in sent7 if n.isdigit())
-```
-
-Have a play around with some of these operators in the cells below.
-
-```python
-
+#
 ```
 
 ```python
-
-```
-
-```python
-# You can insert more cells via the menu bar if you need to!
+#
 ```
 
 ### Bonus!
@@ -628,12 +695,20 @@ You'll remember right at the beginning we started looking at the size of the voc
 
      len(set(text1))
 
+
 This count includes items of punctuation and treats capitalised and non-capitalised words as different things (*This* vs *this*). We can now fix these problems. We start by getting rid of capitalised words, then we get rid of the punctuation and numbers.
 
 ```python
-len(set(word.lower() for word in text1))
+toks = []
+for token in text1:
+    if token.isalnum():
+        toks.append(token.lower())
+len(set(toks))
+
+# or, on one line:
+# len(set(token.lower() for token in text1 if token.isalnum()))
 ```
 
-```python
-len(set(word.lower() for word in text1 if word.isalpha()))
-```
+### Congratulations!
+
+You've now had a really great peek into how computers understand written text. In the next session, we'll have all the foundations we need to do some common corpus linguistic tasks, like collocation, keywording and n-gramming.
