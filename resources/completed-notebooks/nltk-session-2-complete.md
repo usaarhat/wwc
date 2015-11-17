@@ -79,7 +79,7 @@ def gutenberger(list_of_nums):
         title = [line for line in raw_text.splitlines() if line.startswith('Title:')]
         if title:
             title = title[0]
-            print title
+            print(title)
         text[title] = raw_text
     return text
 ```
@@ -121,8 +121,8 @@ this:
 f = open('corpora/oz_politics/ozpol.txt')
 raw = f.read()
 raw = unicode(raw.lower(), 'utf-8') # make it lowercase and unicode
-len(raw)
-raw[:2000]
+print(len(raw))
+print(raw[:2000])
 ```
 
 ## Sentence segmentation
@@ -158,24 +158,29 @@ syllables, or phonemes. We're not going to go down those roads, though.
 
 ```python
 tokenized_sents = [nltk.word_tokenize(i) for i in sents]
-print tokenized_sents[:10]
+print(tokenized_sents[:10])
 # another view:
 # tokenized_sents[:10]
 ```
 
+## Regular expressions
+
+Now that we have a list of tokens, we might want to start counting the appearance of words. That can be very simple:
+
+```python
+def howmany(word):
+    return sum([s.count(word) for s in tokenized_sents])
+```
+
+Regular expressions are in and of themselves a language. Alphanumeric characters and some punctuation work just like normal searches, but some special characters have different meanings. You've probably already seen some of these in the wild, like the asterisk as wildcard.
+
 ## Stemming
 
-Stemming is the task of finding the stem of a word. So, *cats --> cat*, or
-*taking --> take*. It is an important task when counting words, as often the
-counting each inflection seperately is not particuarly helpful: forms of the
-verb 'to be' might seem under-represented if we could *is, are, were, was, am,
-be, being, been* separately.
+Stemming is the task of finding the stem of a word. So, *cats --> cat*, or *taking --> take*. It is an important task when counting words, as often the counting each inflection seperately is not particuarly helpful: forms of the verb 'to be' might seem under-represented if we could *is, are, were, was, am, be, being, been* separately.
 
-NLTK has pre-programmed stemmers, but we can build our own using some of the
-skills we've already learned.
+NLTK has pre-programmed stemmers, but we can build our own using some of the skills we've already learned.
 
-A stemmer is the kind of thing that would make a good function, so let's do
-that.
+A stemmer is the kind of thing that would make a good function, so let's do that.
 
 ```python
 def stem(word):
@@ -199,16 +204,11 @@ for sent in tokenized_sents[:5]:
         print(stem(token))
 ```
 
-Looking at the output, we can see that the stemmer works: *wingers* becomes
-*winger*, and *tearing* becomes *tear*. But, sometimes it does things we don't
-want: *Nothing* becomes *noth*, and *mate* becomes *mat*.
+Looking at the output, we can see that the stemmer works: *wingers* becomes *winger*, and *tearing* becomes *tear*. But, sometimes it does things we don't want: *Nothing* becomes *noth*, and *mate* becomes *mat*.
 
-We can see that this approach has obvious limitations. So, let's rely on a
-purpose-built stemmer. These rely in part on dictionaries. Note the subtle
-differences between the two possible stemmers.
+We can see that this approach has obvious limitations. So, let's rely on a purpose-built stemmer. These rely in part on dictionaries. Note the subtle differences between the two possible stemmers.
 
-Currently, we have a list of sentences, and each sentence is a list of words. We
-need to flatten this list:
+Currently, we have a list of sentences, and each sentence is a list of words. We need to flatten this list:
 
 ```python
 tokens = []
@@ -226,13 +226,12 @@ porter = nltk.PorterStemmer()
 
 # stem each word in tokens
 stems = [lancaster.stem(t) for t in tokens]  # replace lancaster with porter here
-print stems[:100]
+print(stems[:100])
 ```
 
 Notice that both stemmers handle some things rather poorly. The main reason for this is that they are not aware of the *word class* of any particular word: *nothing* is a noun, and nouns ending in *ing* should not have *ing* removed by the stemmer (swing, bling, ring...). Later in the course, we'll start annotating corpora with grammatical information. This improves the accuracy of stemmers a lot.
 
-> Note: stemming is not *always* the best thing to do: though *thing* is the stem of *things*, things has a unique meaning, as in *things will improve*. If we are interested in vague language, we may not want to collapse things -->
-thing.
+> Note: stemming is not *always* the best thing to do: though *thing* is the stem of *things*, things has a unique meaning, as in *things will improve*. If we are interested in vague language, we may not want to collapse things --> thing.
 
 ## Collocation
 
@@ -245,7 +244,7 @@ This kind of information may be useful to lexicographers, discourse analysts, or
 In NLTK, collocation works from ordered lists of tokens. We made this earlier as `tokens`, didn't we?
 
 ```python
-print tokens[:50]
+print(tokens[:50])
 ```
 
 If not, here:
@@ -267,7 +266,7 @@ bigram_measures = nltk.collocations.BigramAssocMeasures()
 # go and find bigrams
 finder = BigramCollocationFinder.from_words(tokens)
 # measure which bigrams are important and print the top 30
-print sorted(finder.nbest(bigram_measures.raw_freq, 30))
+print(sorted(finder.nbest(bigram_measures.raw_freq, 30)))
 ```
 
 So, that tells us a little: we can see that terrorists, Muslims and the Middle
@@ -313,7 +312,7 @@ finder.apply_word_filter(lambda w: w.lower() in ignored_words or not w.isalnum()
 # measure which bigrams are important and print the top 30
 result = sorted(finder.nbest(bigram_measures.raw_freq, 30))
 for bigram in result:
-    print bigram
+    print(bigram)
 ```
 
 ## Clustering/n-grams
@@ -336,7 +335,7 @@ n = 10
 # use builtin tokeniser (but we could use a different one)
 tengrams = ngrams(tokenised, n)
 for gram in tengrams:
-    print gram
+    print(gram)
 ```
 
 So, there are plenty of tengrams in there! What we're interested in, however, is
@@ -422,7 +421,7 @@ def concordancer(text, query):
         if query in line:
             start, end = line.split(query, 1)  
             concline = [start[-30:], query, end[:30]]
-            print "\t".join(concline).expandtabs(35)
+            print("\t".join(concline).expandtabs(35))
 ```
 
 ```python
