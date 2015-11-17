@@ -1,10 +1,6 @@
 # Session 2: Common NLTK tasks
 
-In this session we provide an quick introduction to the field of *corpus
-linguistics*. We then engage with common uses of NLTK within these areas, such
-as sentence segmentation, tokenisation and stemming. Often, NLTK has inbuilt
-methods for performing these tasks. As a learning exercise, however, we will
-sometimes build basic tools from scratch.
+In this session we provide an quick introduction to the field of *corpus linguistics*. We then engage with common uses of NLTK within these areas, such as sentence segmentation, tokenisation and stemming. Often, NLTK has inbuilt methods for performing these tasks. As a learning exercise, however, we will sometimes build basic tools from scratch.
 
 ## Corpus linguistics
 
@@ -41,8 +37,7 @@ a well-known critique, Henry Widdowson ([2000, p. 6-7](#ref:widdowson)) said:
 
 ## Loading a corpus
 
-First, we have to load a corpus. We'll use a text file containing posts to an
- ustralian online forum for discussing politics. It's full of very interesting natural language data!
+First, we have to load a corpus. We'll use a text file containing posts to an Australian online forum for discussing politics. It's full of very interesting natural language data!
 
 ```python
 from IPython.display import display
