@@ -37,7 +37,7 @@ Once again, we see that the function naming in python is intuitive and without e
 
 We'll see more of them in the later sessions
 
-Comphrending List with List Comprehension
+Comprehending List with List Comprehension
 ====
 
 Given a list we learn how to use a `for` loop to iterate through the elements inside the list one by one, e.g.
