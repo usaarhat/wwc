@@ -5,6 +5,8 @@ Warming Up to Python
 
 To follow up on our [first warm up session](https://github.com/interrogator/wwc/blob/master/resources/completed-notebooks/pywarmup-session1.md), we will go through some pythonic container types that are pretty neat.
 
+So let's fire up the https://try.jupyter.org/ notebook and let's go...
+
 
 Build up on Built-ins
 ====
