@@ -153,7 +153,7 @@ word_counter
 Tuple-ware
 ====
 
-Unlike the other basic data container, `tuple` is a special breed. In other contains, it is possible to append a new item to a list, add to a set and expand a dictionary, e.g.
+Unlike the other basic data container types, `tuple` is a special breed. In other contains, it is possible to append a new item to a list, add to a set and expand a dictionary, e.g.
 
 ```python
 list1 = [6,1,2,7,3,4,2,6,3]
