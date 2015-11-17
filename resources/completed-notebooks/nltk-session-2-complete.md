@@ -119,12 +119,13 @@ GitHub](https://github.com/resbaz/nltk). We can ask Python to get it for us.
 this data into a corpus.
 
 ```python
-from urllib import urlopen # a library for working with urls
+import urllib.request # a library for working with urls 
 url = "https://raw.githubusercontent.com/resbaz/nltk/master/corpora/oz_politics/ozpol.txt" # define the url
-raw = urlopen(url).read() # download and read the corpus into raw variable
-raw = unicode(raw.lower(), 'utf-8') # make it lowercase and unicode
-len(raw) # how many characters does it contain?
-raw[:2000] # first 2000 characters
+retrieved_data = urllib.request.urlopen(url) # download the data from the url 
+raw_text = retrieved_data.read().decode() # deocde the data into unicode strings
+raw_text = raw_text.lower() # make it lowercase
+len(raw_text) # how many characters does it contain?
+raw_text[:2000] # first 2000 characters
 ```
 
 So that just got one file. Next, let's have a look at [Project
