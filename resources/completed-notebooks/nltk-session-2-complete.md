@@ -50,10 +50,10 @@ This file is available online, at the [ResBaz GitHub](https://github.com/resbaz/
 > Later in the course, we'll discuss how to extract data from the Web and turn this data into a corpus.
 
 ```python
-import urllib.request # a library for working with urls 
+import requests # a library for working with urls 
 url = "https://raw.githubusercontent.com/resbaz/nltk/master/corpora/oz_politics/ozpol.txt" # define the url
-retrieved_data = urllib.request.urlopen(url) # download the data from the url 
-raw_text = retrieved_data.read().decode() # deocde the data into unicode strings
+response = requests.get(url, verify=False)
+raw_text = response.text
 raw_text = raw_text.lower() # make it lowercase
 len(raw_text) # how many characters does it contain?
 raw_text[:2000] # first 2000 characters
@@ -173,6 +173,28 @@ def howmany(word):
 ```
 
 Regular expressions are in and of themselves a language. Alphanumeric characters and some punctuation work just like normal searches, but some special characters have different meanings. You've probably already seen some of these in the wild, like the asterisk as wildcard.
+
+```python
+import re
+re.findall('muslims?', raw_text)
+re.findall('.*muslim.*', raw_text)
+re.findall('[^\s]+ muslims? [^\s]+', raw_text)
+Counter(re.findall('([^\s]+) muslims? [^\s]+', raw_text)).most_common()
+```
+
+We can use this kind of approach to start matching verb stems:
+
+```python
+re.findall(r'([a-z]+(ing|ed))', raw_text)
+```
+
+Or we could use it to stem our text
+```python
+regex = re.compile(r'([a-z]+)(ing|s|ed|er)([^a-z])')
+re.sub(regex, r'\1\3', raw_text)
+
+There are limits, though. What are they?
+
 
 ## Stemming
 
@@ -332,43 +354,23 @@ sentence = 'give a man a fish and you feed him for a day; teach a man to fish an
 tokenised = nltk.word_tokenize(sentence)
 # length of ngram
 n = 10
-# use builtin tokeniser (but we could use a different one)
-tengrams = ngrams(tokenised, n)
-for gram in tengrams:
-    print(gram)
+tengrams = list(ngrams(tokenised, n))
+print(tengrams)
 ```
 
 So, there are plenty of tengrams in there! What we're interested in, however, is
 duplicated n-grams:
 
 ```python
-# arguments: a text, ngram size, and minimum occurrences
 def ngrammer(text, gramsize = 3, threshold = 4):
-    """Get any repeating ngram containing gramsize tokens"""
-    # we need to import this in order to find the duplicates:
-    import nltk
-    from nltk.util import ngrams
-    from collections import defaultdict
-    # get ngrams of gramsize    
+    """get ngrams of gramsize size and threshold minimum occurrences"""
     if type(text) != list:
-        text = tokenised = nltk.word_tokenize(text)
-    text = [token for token in text if token.isalnum()]
-    # get ngrams of gramsize    
-    raw_grams = ngrams(text, gramsize)
-    
-    # a subdefinition to get duplicate lists in a list
-    def list_duplicates(seq):
-        tally = defaultdict(list)
-        for i,item in enumerate(seq):
-            tally[item].append(i)
-            # return to us the index and the ngram itself:
-        return ((len(locs),key) for key,locs in tally.items() 
-               if len(locs) > threshold)
-
-    # use our duplication detector to find duplicates
-    dupes = list_duplicates(raw_grams)
-    # return them, sorted by most frequent
-    return sorted(dupes, reverse = True)
+        text = nltk.word_tokenize(text)
+    # skip punctuation?
+    # 
+    ngms = ngrams(text, gramsize)
+    cntr = Counter(ngms)
+    return Counter({k: v for k, v in cntr.items() if v >= threshold})
 ```
 
 Now that it's defined, let's run it, looking for trigrams
@@ -389,6 +391,7 @@ Too many results? Let's set a higher threshold than the default.
 ```python
 ngrammer(raw, gramsize = 3, threshold = 10)
 ```
+
 
 ## Concordancing with regular expressions
 
