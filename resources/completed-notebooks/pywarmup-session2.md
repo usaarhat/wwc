@@ -210,4 +210,7 @@ tup1.count(3)
 
 ----
 
-Congratulations for completing this warm-up. You have learnt more about built-ins and the various basic container types in python! 
+Congratulations !!!
+====
+
+You have learnt more about built-ins and the various basic container types in python! 
