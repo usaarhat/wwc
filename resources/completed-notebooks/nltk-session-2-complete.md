@@ -142,19 +142,19 @@ booknums = ['24510', '19073', '21592']
 ```
 
 ```python
+import urllib.request
 def gutenberger(list_of_nums):
     text = []
-    from urllib import urlopen
     for num in list_of_nums:
         num = str(num)
         url = 'https://www.gutenberg.org/cache/epub/' + num + '/pg' + num + '.txt'
-        raw = urlopen(url).read()
-        raw = unicode(raw, 'utf-8')
-        title = [line for line in raw.splitlines() if line.startswith('Title:')]
+        retrieved_data = urllib.request.urlopen(url)
+        raw_text = retrieved_data.read().decode()
+        title = [line for line in raw_text.splitlines() if line.startswith('Title:')]
         if title:
             title = title[0]
             print title
-        text.append([title, raw])
+        text.append([title, raw_text])
     return text
 ```
 
