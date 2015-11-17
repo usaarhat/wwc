@@ -2,7 +2,7 @@
 
 This notebook is for anyone new to the Python language. If fluent Parseltongue (Python) coder, move on to the next notebook. Otherwise, let's go...
 
-Go to this https://try.jupyter.org/ , click on **new** -> **Python 3** [see this](http://ibin.co/2MqL1JAmPqKg) and it will bring you to a next page. 
+Go to this https://try.jupyter.org/ , click on **new** -> **Python 3**  and it will bring you to a next page. [see this if you can't find the button to start the notebook](http://ibin.co/2MqL1JAmPqKg)
 
 This is the Jupyter notebook (aka `ipython-notebook`) interface, every "clickable" box is refer to as a cell. And you can switch between a text cell, where you can write text like this or a code cell where you can execute python code on the fly. To proceed, click on each code cell and press `shift + enter`...
 
