@@ -126,7 +126,7 @@ print (word_counter['the'])
 print (word_counter['jump'])
 ```
 
-Similar `list`, you can also set the values of a dictionary using comprehension, the following [**dictionary comprehension**](https://www.python.org/dev/peps/pep-0274/) achieves the same result as the for-loop we have above:
+Similar to `list`, you can also set the values of a dictionary using comprehension, the following [**dictionary comprehension**](https://www.python.org/dev/peps/pep-0274/) achieves the same result as the for-loop we have above:
 
 ```python
 sent = 'the quick brown fox jumps over the lazy dog'.split()
