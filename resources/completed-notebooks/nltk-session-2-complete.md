@@ -45,7 +45,7 @@ from IPython.display import HTML
 HTML('<iframe src=http://www.ozpolitic.com/forum/YaBB.pl?board=global width=700 height=350></iframe>')
 ```
 
-This file is available online, at the [ResBaz GitHub](https://github.com/resbaz/nltk). We can ask Python to get it for us.
+This file is available online, at the Research Platforms [GitHub](https://github.com/resbaz/nltk). We can ask Python to get it for us.
 
 > Later in the course, we'll discuss how to extract data from the Web and turn this data into a corpus.
 
@@ -54,90 +54,36 @@ import requests # a library for working with urls
 url = "https://raw.githubusercontent.com/resbaz/nltk/master/corpora/oz_politics/ozpol.txt" # define the url
 response = requests.get(url, verify=False)
 raw_text = response.text
-raw_text = raw_text.lower() # make it lowercase
+raw_text = raw_text.lower() # make it lowercase, to keep things simple
 len(raw_text) # how many characters does it contain?
 raw_text[:2000] # first 2000 characters
 ```
 
-So that just got one file. Next, let's have a look at [Project Gutenberg](https://www.gutenberg.org/wiki/Technology_%28Bookshelf%29). Let's check out *Food processing*.
-
-We can find the URL of a txt file and download it just like above. We could use a loop to get more, however. Let's also write a function to get the texts of books we want. Let's use the book number section to do that.
+Let's save the corpus to our cloud as a text file.
 
 ```python
-booknums = ['24510', '19073', '21592']
+with open('forum.txt', 'w') as fo:
+    fo.write(raw_text.encode('utf-8'))
 ```
 
 ```python
-import urllib.request
-def gutenberger(list_of_nums):
-    text = {}
-    for num in list_of_nums:
-        num = str(num)
-        url = 'https://www.gutenberg.org/cache/epub/' + num + '/pg' + num + '.txt'
-        retrieved_data = urllib.request.urlopen(url)
-        raw_text = retrieved_data.read().decode()
-        title = [line for line in raw_text.splitlines() if line.startswith('Title:')]
-        if title:
-            title = title[0]
-            print(title)
-        text[title] = raw_text
-    return text
-```
-
-Let's call our function:
-
-```python
-foodbooks = gutenberger(booknums)
-```
-
-We can then look at our books by name:
-
-```python
-foodbooks.keys()
-```
-
-and load them:
-
-```python
-foodbooks[namehere]
-```
-
-Or we could then use another loop to start playing with our data:
-
-```python
-for title, text in foodbooks.items():
-    print(title.upper())
-    print(text[10000:10500])
-    print('\n\n')
-```
-
-For this session, we'll work with the forum corpus.
-
-We actually already downloaded a version of this file when we first cloned the
-ResBaz GitHub repository. It's in our *corpora* folder. We can access it like
-this:
-
-```python
-f = open('corpora/oz_politics/ozpol.txt')
-raw = f.read()
-raw = unicode(raw.lower(), 'utf-8') # make it lowercase and unicode
-print(len(raw))
-print(raw[:2000])
+f = open('forum.txt')
+raw_text = f.read()
+raw_text = unicode(raw_text.lower(), 'utf-8') # make it lowercase and unicode
+print(len(raw_text))
+print(raw_text[:2000])
 ```
 
 ## Sentence segmentation
 
-So, with a basic understanding of regex, we can now start to turn our corpus
-into a structured resource. At present, we have 'raw', a very, very long string
-of text.
+We now e can now start to turn our corpus into a structured resource. At present, we have `raw_text`, a very, very long string of text.
 
- We should break the string into segments. First, we'll split the corpus into
-sentences. This task is a pretty boring one, and it's tough for us to improve on
-existing resources. We'll try, though.
+We should break the string into segments. First, we'll split the corpus into sentences. This task is a pretty boring one, and it's tough for us to improve on existing resources. We'll try, though.
 
 ```python
+import nltk.data
 sent_tokenizer=nltk.data.load('tokenizers/punkt/english.pickle')
-sents = sent_tokenizer.tokenize(raw)
+sents = sent_tokenizer.tokenize(raw_text)
 sents[101:111]
 ```
 
@@ -145,34 +91,64 @@ Alright, we have sentences. Now what?
 
 ## Tokenisation
 
-Tokenisation is simply the process of breaking texts down into words. We already
-did a little bit of this in Session 1. We won't build our own tokenizer, because
-it's not much fun. NLTK has one we can rely on.
+Tokenisation is simply the process of breaking texts down into words. We already did a little bit of this in Session 1. We won't build our own tokenizer, because it's not much fun. NLTK has one we can rely on.
 
-Keep in mind that definitions of tokens are not standardised, especially for
-languages other than English. Serious problems arise when comparing two corpora
-that have been tokenised differently.
-
-> **Note:** It is also possible to use NLTK to break tokens into morphemes,
-syllables, or phonemes. We're not going to go down those roads, though.
+Keep in mind that definitions of tokens are not standardised, especially for languages other than English. Serious problems arise when comparing two corpora that have been tokenised differently.
 
 ```python
 tokenized_sents = [nltk.word_tokenize(i) for i in sents]
-print(tokenized_sents[:10])
-# another view:
-# tokenized_sents[:10]
+tokenized_sents[:10]
 ```
 
-## Regular expressions
+What we have is a list of lists: sentences and their tokens. We might also want to flatten the list:
 
-Now that we have a list of tokens, we might want to start counting the appearance of words. That can be very simple:
+```python
+flat = sum(tokenized_sents, [])
+```
+
+... the sentence segmentation is still important, however, as it helped with proper handling of sentence final punctuation, for example.
+
+Let's jump quickly into analysing the corpus. Like in the last lesson, we might want to count tokens. That can be very simple:
 
 ```python
 def howmany(word):
     return sum([s.count(word) for s in tokenized_sents])
 ```
 
-Regular expressions are in and of themselves a language. Alphanumeric characters and some punctuation work just like normal searches, but some special characters have different meanings. You've probably already seen some of these in the wild, like the asterisk as wildcard.
+Cool. Two problems, though. First, this takes one word of interest at a time. Second, we can only search for literal words.
+
+## Loops
+
+A common programming method for reperforming some function is the *loop*. Most prototypical is the *for loop*:
+
+```python
+range(10)
+```
+
+```python
+for i in range(10):
+    print i
+```
+
+So, how would we put this to work with our `howmany()` function?
+
+```python
+wordlist = ['terror', 'refugee', 'refugees', 'islam']
+for word in wordlist:
+    print word, howmany(word)
+```
+
+Powerful, eh? The next problem, however, is that we're stuck writing out 'refugee' and `refugees`.
+
+## Regular expressions
+
+Regular expressions are a language for searching strings of characters. For us right now, they're a language inside a language. Alphanumeric characters and some punctuation work just like normal searches, but some special characters have different meanings. You've probably already seen some of these in the wild, like the asterisk as wildcard.
+
+At their simplest, we can use `re.search()` to search 
+
+re.search(r'[a-z]+ing\b', raw_text)
+
+Let's use regular expressions to search our non-segmented text:
 
 ```python
 import re
@@ -182,19 +158,26 @@ re.findall('[^\s]+ muslims? [^\s]+', raw_text)
 Counter(re.findall('([^\s]+) muslims? [^\s]+', raw_text)).most_common()
 ```
 
-We can use this kind of approach to start matching verb stems:
+We can use this kind of approach to start matching nouns and their plurals:
 
 ```python
-re.findall(r'([a-z]+(ing|ed))', raw_text)
+re.findall(r'([a-z]+(es|s))', raw_text)
 ```
 
-Or we could use it to stem our text
+Or we could use it to stem our text:
+
 ```python
 regex = re.compile(r'([a-z]+)(ing|s|ed|er)([^a-z])')
 re.sub(regex, r'\1\3', raw_text)
 
-There are limits, though. What are they?
+Can you update `howmany()` to handle a regular expression? Use our `flat` corpus if it's easier.
 
+```python
+def howmany(regex):
+    return len([re.findall(regex))
+```
+
+There are limits to this kind of approach, though. What are they?
 
 ## Stemming
 
