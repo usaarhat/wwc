@@ -37,13 +37,7 @@ a well-known critique, Henry Widdowson ([2000, p. 6-7](#ref:widdowson)) said:
 
 ## Loading a corpus
 
-First, we have to load a corpus. We'll use a text file containing posts to an Australian online forum for discussing politics. It's full of very interesting natural language data!
-
-```python
-from IPython.display import display
-from IPython.display import HTML
-HTML('<iframe src=http://www.ozpolitic.com/forum/YaBB.pl?board=global width=700 height=350></iframe>')
-```
+First, we have to load a corpus. We'll use a text file containing posts to [an Australian online forum](http://www.ozpolitic.com/forum/YaBB.pl?board=global) for discussing politics. It's full of very interesting natural language data!
 
 This file is available online, at the Research Platforms [GitHub](https://github.com/resbaz/nltk). We can ask Python to get it for us.
 
@@ -51,7 +45,8 @@ This file is available online, at the Research Platforms [GitHub](https://github
 
 ```python
 import requests # a library for working with urls 
-url = "https://raw.githubusercontent.com/resbaz/nltk/master/corpora/oz_politics/ozpol.txt" # define the url
+url = 'http://git.io/v47HI'
+# url = "https://raw.githubusercontent.com/resbaz/nltk/master/corpora/oz_politics/ozpol.txt" # define the url
 response = requests.get(url, verify=False)
 raw_text = response.text
 raw_text = raw_text.lower() # make it lowercase, to keep things simple
@@ -68,17 +63,17 @@ with open('forum.txt', 'w') as fo:
 
 ```python
 f = open('forum.txt')
-raw_text = f.read()
-raw_text = unicode(raw_text.lower(), 'utf-8') # make it lowercase and unicode
-print(len(raw_text))
-print(raw_text[:2000])
+loaded_raw_text = f.read()
+loaded_raw_text = unicode(loaded_raw_text.lower(), 'utf-8') # make it lowercase and unicode
+print(len(loaded_raw_text))
+print(loaded_raw_text[:2000])
 ```
 
 ## Sentence segmentation
 
-We now e can now start to turn our corpus into a structured resource. At present, we have `raw_text`, a very, very long string of text.
+We can now start to turn our corpus into a structured resource. At present, we have `raw_text`, a very, very long string of text.
 
-We should break the string into segments. First, we'll split the corpus into sentences. This task is a pretty boring one, and it's tough for us to improve on existing resources. We'll try, though.
+We should break the string into segments. First, we'll split the corpus into sentences. This task is a pretty boring one, and it's tough for us to improve on existing resources.
 
 ```python
 import nltk.data
