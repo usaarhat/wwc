@@ -57,15 +57,13 @@ raw_text[:2000] # first 2000 characters
 Let's save the corpus to our cloud as a text file.
 
 ```python
-with open('forum.txt', 'wb') as fo:
+with open('forum.txt', 'w', encoding = 'utf-8') as fo:
     fo.write(bytes(raw_text.encode('utf-8')))
 ```
 
 ```python
-f = open('forum.txt', 'rb')
-loaded_raw_text = f.read().decode('utf-8')
-#loaded_raw_text = unicode(loaded_raw_text.lower(), 'utf-8') # make it lowercase and unicode
-print(len(loaded_raw_text))
+with open('forum.txt', 'r', encoding = 'utf-8') as fo:
+    loaded_raw_text = f.read().lower()
 print(loaded_raw_text[:2000])
 ```
 
@@ -367,11 +365,11 @@ def ngrammer(text, gramsize = 3, threshold = 4):
     """get ngrams of gramsize size and threshold minimum occurrences"""
     if type(text) != list:
         text = nltk.word_tokenize(text)
-    # skip punctuation?
+    # skip punctuation? stopwords?
     # 
     ngms = ngrams(text, gramsize)
     cntr = Counter(ngms)
-    return Counter({k: v for k, v in cntr.items() if v >= threshold})
+    return [(gram, freq) for gram, freq in cntr.most_common() if freq >= threshold]
 ```
 
 Now that it's defined, let's run it, looking for trigrams
