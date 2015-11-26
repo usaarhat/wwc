@@ -402,11 +402,11 @@ text = nltk.Text(flat)  # formats our tokens for concordancing
 text.concordance("muslims")
 ```
 
-# A problem with the NLTK concordancer is that it only works with individual tokens. What if we want to find words that end with **ment*, or words beginning with *poli**?
+A problem with the NLTK concordancer is that it only works with individual tokens. What if we want to find words that end with **ment*, or words beginning with *poli**?
 
-# We already searched text with Regular Expressions. It's not much more work to build regex functionality into our own concordancer.
+We already searched text with Regular Expressions. It's not much more work to build regex functionality into our own concordancer.
 
-# From running the code below, you can see that bracketting sections of our regex causes results to split into lists:
+From running the code below, you can see that bracketting sections of our regex causes results to split into lists:
 ```
 
 ```python
