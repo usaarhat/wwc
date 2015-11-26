@@ -43,8 +43,6 @@ In this session, we put our existing skills to work in order to investigate the 
 * Collocates
 * Concordancing
 
-We finish off the session by writing a regular-expression based concordancer.
-
 ## [Session 3: Working with corpora](https://github.com/interrogator/wwc/blob/master/resources/completed-notebooks/nltk-session-3-complete.md)
 
 * POS tagging
