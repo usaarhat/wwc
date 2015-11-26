@@ -43,13 +43,12 @@ In this session, we put our existing skills to work in order to investigate the 
 * Collocates
 * Concordancing
 
-We finish off the session by writing a regular-expression based concordancer.
-
 ## [Session 3: Working with corpora](https://github.com/interrogator/wwc/blob/master/resources/completed-notebooks/nltk-session-3-complete.md)
 
-Now that we need know the basics of Python and corpus linguistics, we need to figure out how to get our own data into forms that we can interrogate.
-
-> More details forthcoming!
+* POS tagging
+* Lemmatisation
+* Exploring annotated data
+* Writing a concordancer
 
 ## [Session 4: Getting the most out of what we've learned](https://github.com/interrogator/wwc/blob/master/resources/completed-notebooks/nltk-session-4-complete.md)
 
